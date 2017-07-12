@@ -22,10 +22,10 @@ class CreateMoviesTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 45);
+            $table->string('name');
             $table->integer('duration')->nullable();
             $table->integer('availables')->default('0');
-            $table->string('trailer', 100)->nullable();
+            $table->string('trailer')->nullable();
             $table->integer('parental_guide_id')->unsigned();
 
             $table->foreign('parental_guide_id')
