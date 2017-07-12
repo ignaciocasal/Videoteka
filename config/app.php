@@ -179,6 +179,7 @@ return [
 
         // My Providers
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 
