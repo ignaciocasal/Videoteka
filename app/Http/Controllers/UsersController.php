@@ -40,7 +40,7 @@ class UsersController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        flash('El usuario se ha registrado con exito', 'success');
+        flash('El usuario se ha registrado con exito')->success();
         return redirect()->route('users.index');
     }
 
@@ -80,7 +80,7 @@ class UsersController extends Controller
         $user->fill($request->all());
         $user->save();
 
-        flash('El usuario ' .$user->name. ' ha sido editado con exito');
+        flash('El usuario ' .$user->name. ' ha sido editado con exito')->success();
         return redirect()->route('users.index');
     }
 
@@ -95,7 +95,7 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        flash('El usuario '. $user->name .' se ha eliminado con exito', 'success');
+        flash('El usuario '. $user->name .' se ha eliminado con exito')->success();
         return redirect()->route('users.index');
     }
 }
