@@ -3,17 +3,17 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateParentalGuidesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'users';
+    public $set_schema_table = 'parental_guides';
 
     /**
      * Run the migrations.
-     * @table users
+     * @table parental_guides
      *
      * @return void
      */
@@ -23,14 +23,7 @@ class CreateUsersTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 45);
-            $table->string('lastname', 45);
-            $table->string('dni', 45)->unique();
-            $table->string('email', 45)->unique();
-            $table->string('phone', 45);
-            $table->string('password', 45);
-            $table->string('type', 45);
-            $table->softDeletes();
-
+            $table->string('description', 120)->nullable();
         });
     }
 

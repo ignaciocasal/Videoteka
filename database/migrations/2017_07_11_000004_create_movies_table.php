@@ -3,17 +3,17 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateMoviesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'users';
+    public $set_schema_table = 'movies';
 
     /**
      * Run the migrations.
-     * @table users
+     * @table movies
      *
      * @return void
      */
@@ -23,14 +23,15 @@ class CreateUsersTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 45);
-            $table->string('lastname', 45);
-            $table->string('dni', 45)->unique();
-            $table->string('email', 45)->unique();
-            $table->string('phone', 45);
-            $table->string('password', 45);
-            $table->string('type', 45);
-            $table->softDeletes();
+            $table->integer('duration')->nullable();
+            $table->integer('availables')->default('0');
+            $table->string('trailer', 100)->nullable();
+            $table->integer('parental_guide_id')->unsigned();
 
+            $table->foreign('parental_guide_id')
+                ->references('id')->on('parental_guides');
+
+            $table->softDeletes();
         });
     }
 

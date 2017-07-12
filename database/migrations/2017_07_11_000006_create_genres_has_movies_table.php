@@ -3,17 +3,17 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateGenresHasMoviesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'users';
+    public $set_schema_table = 'genres_has_movies';
 
     /**
      * Run the migrations.
-     * @table users
+     * @table genres_has_movies
      *
      * @return void
      */
@@ -21,15 +21,17 @@ class CreateUsersTable extends Migration
     {
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('name', 45);
-            $table->string('lastname', 45);
-            $table->string('dni', 45)->unique();
-            $table->string('email', 45)->unique();
-            $table->string('phone', 45);
-            $table->string('password', 45);
-            $table->string('type', 45);
-            $table->softDeletes();
+            $table->increments('genre_id')->unsigned();
+            $table->integer('movie_id')->unsigned();
+
+            $table->foreign('genre_id')
+                ->references('id')->on('genres')
+                ->onDelete('cascade');
+
+
+            $table->foreign('movie_id')
+                ->references('id')->on('movies')
+                ->onDelete('cascade');
 
         });
     }
