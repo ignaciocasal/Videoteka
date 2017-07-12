@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::group(['prefix' => 'admin','middleware' => 'auth'],function(){
+Route::group(['prefix' => 'admin'],function(){
   Route::resource('users','UsersController'); //Primer parametro: nombre de grupo de rutas / segundo nombre del controlador
     Route::get('users/{id}/destroy', [
       'uses' => 'UsersController@destroy',
