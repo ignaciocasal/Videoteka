@@ -26,7 +26,7 @@ class CreateMoviesTable extends Migration
             $table->integer('duration')->nullable();
             $table->integer('availables')->default('0');
             $table->string('trailer', 100)->nullable();
-            $table->integer('parental_guide_id');
+            $table->integer('parental_guide_id')->unsigned();
 
             $table->foreign('parental_guide_id')
                 ->references('id')->on('parental_guides');

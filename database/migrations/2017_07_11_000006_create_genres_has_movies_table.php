@@ -21,8 +21,8 @@ class CreateGenresHasMoviesTable extends Migration
     {
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('genre_id');
-            $table->integer('movie_id');
+            $table->increments('genre_id')->unsigned();
+            $table->integer('movie_id')->unsigned();
 
             $table->foreign('genre_id')
                 ->references('id')->on('genres')
