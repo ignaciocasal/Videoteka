@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title','Crear Tag')
+@section('title','Crear Género')
 
 @section('content')
-    {!! Form::open(['route'=>'tags.store', 'method'=>'POST']) !!}
+    {!! Form::open(['route'=>'genres.store', 'method'=>'POST']) !!}
     <div class="form-group">
         {!! Form::label('name','Nombre') !!}
-        {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Nombre del Tag']) !!}
+        {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Nombre del Género']) !!}
     </div>
 
     <div class="form-group">
