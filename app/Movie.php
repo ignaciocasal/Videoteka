@@ -9,7 +9,9 @@ class Movie extends Model
 {
     protected $table = "movies"; //nombre de la tabla
 
-    protected $fillable = ['name','duration','availables','trailer','parental_guide_id'];
+    protected $fillable = ['title','duration','availables','trailer','parental_guide_id'];
+
+    public $timestamps = false; //desactivar los timestamps
 
     use SoftDeletes;
 
@@ -26,5 +28,10 @@ class Movie extends Model
     }
         public function parental_guide(){
           return $this->belongsTo('App\Parental_guide');
+    }
+
+    //scope de busqueda
+    public function scopeSearch($query, $title){
+        return $query->where('title', 'LIKE', '%'.$title.'%' );
     }
 }
