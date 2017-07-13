@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Genre;
 use App\Movie;
 use App\Parental_guide;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class MoviesController extends Controller
     {
         $movies = Movie::search($request->title)->orderBy('id', 'DESC')->paginate(7);
         $movies->each(function ($movies){
-//            $movies->genres;
+            $movies->genres;
             $movies->parental_guide;
         });
         return view('admin.movies.index')->with('movies', $movies);
@@ -31,10 +32,10 @@ class MoviesController extends Controller
     public function create()
     {
         $parental_guides = Parental_guide::orderBy('id', 'ASC')->pluck('name','id');
-//        $tags = Tag::orderBy('name', 'ASC')->pluck('name','id');
+        $genres = Genre::orderBy('name', 'ASC')->pluck('name','id');
         return view('admin.movies.create')
             ->with('parental_guides', $parental_guides)
-//            ->with('tags', $tags)
+            ->with('genres', $genres)
             ;
     }
 
@@ -46,13 +47,13 @@ class MoviesController extends Controller
      */
     public function store(Request $request)
     {
-        $article = new Movie($request->all());
+        $movie = new Movie($request->all());
 //        $article->user_id = Auth::user()->id;
-        $article->save();
+        $movie->save();
 
-//        if ($request->tags_id){
-//            $article->tags()->sync($request->tags_id);
-//        }
+        if ($request->genres_id){
+            $movie->genres()->sync($request->genres_id);
+        }
 
         flash('La película se ha creado con exito')->success();
         return redirect()->route('movies.index');
@@ -79,14 +80,14 @@ class MoviesController extends Controller
     {
         $movie = Movie::find($id);
         $movie->parental_guide;
-//        $my_tags = $article->tags->pluck('id')->toArray();
+        $my_genres = $movie->genres->pluck('id')->toArray();
         $parental_guides = Parental_guide::orderBy('id', 'ASC')->pluck('name','id');
-//        $tags = Tag::orderBy('name', 'ASC')->pluck('name','id');
+        $genres = Genre::orderBy('name', 'ASC')->pluck('name','id');
         return view('admin.movies.edit')
             ->with('parental_guides', $parental_guides)
-//            ->with('tags', $tags)
+            ->with('genres', $genres)
             ->with('movie', $movie)
-//            ->with('my_tags', $my_tags)
+            ->with('my_genres', $my_genres)
             ;
     }
 
@@ -99,15 +100,15 @@ class MoviesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article = Movie::find($id);
-        $article->fill($request->all());
-        $article->save();
+        $movie = Movie::find($id);
+        $movie->fill($request->all());
+        $movie->save();
 
-//        if ($request->tags_id){
-//            $article->tags()->sync($request->tags_id);
-//        }
+        if ($request->genres_id){
+            $movie->genres()->sync($request->genres_id);
+        }
 
-        flash('La  película ' .$article->title. ' ha sido editada con exito')->success();
+        flash('La  película ' .$movie->title. ' ha sido editada con exito')->success();
         return redirect()->route('movies.index');
     }
 
@@ -119,10 +120,10 @@ class MoviesController extends Controller
      */
     public function destroy($id)
     {
-        $article = Movie::find($id);
-        $article->delete();
+        $movie = Movie::find($id);
+        $movie->delete();
 
-        flash('La  película '. $article->name .' se ha eliminado con exito')->success();
+        flash('La  película '. $movie->title .' se ha eliminado con exito')->success();
         return redirect()->route('movies.index');
     }
 }
