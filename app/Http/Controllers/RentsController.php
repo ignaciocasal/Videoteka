@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rent;
+use App\User;
+use App\Movie;
 
 class RentsController extends Controller
 {
@@ -11,9 +14,15 @@ class RentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+      $rents = Rent::orderBy('id', 'DESC')->paginate(5);
+        $rents->each(function ($rents){
+            $rents->user;
+            $rents->movie;
+
+        });
+        return view('admin.rents.index')->with('rents', $rents);
     }
 
     /**

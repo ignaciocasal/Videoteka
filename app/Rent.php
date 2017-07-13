@@ -22,7 +22,7 @@ class Rent extends Model
 
     // para establecer relacion
     public function movie(){
-          return $this->belongsTo('App\Movies');
+          return $this->belongsTo('App\Movie');
     }
     public function user(){
           return $this->belongsTo('App\User');
