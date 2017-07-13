@@ -30,10 +30,10 @@
         {!! Form::select('parental_guide_id', $parental_guides, $movie->parental_guide->id, ['class'=>'form-control select-parental_guide']) !!}
     </div>
 
-    {{--<div class="form-group">--}}
-        {{--{!! Form::label('tags_id[]','Tags') !!}--}}
-        {{--{!! Form::select('tags_id[]', $tags, $my_tags, ['tags_id' => 'id', 'class'=>'form-control select-tags', 'multiple']) !!}--}}
-    {{--</div>--}}
+    <div class="form-group">
+        {!! Form::label('genres_id[]','Géneros') !!}
+        {!! Form::select('genres_id[]', $genres, $my_genres, ['genres_id' => 'id', 'class'=>'form-control select-genres', 'multiple']) !!}
+    </div>
 
     <div class="form-group">
         {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
@@ -43,10 +43,10 @@
 
 @section('js')
     <script>
-//        $(".select-tags").chosen({
-//            placeholder_text_multiple: 'Seleccione los tags',
-//            no_results_text: 'No se encontraron tags con el nombre'
-//        });
+        $(".select-genres").chosen({
+            placeholder_text_multiple: 'Seleccione los tags',
+            no_results_text: 'No se encontraron tags con el nombre'
+        });
 
         $(".select-category").chosen({
             placeholder_text_single: 'Seleccione la categoria',
