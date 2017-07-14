@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Rent;
 use App\User;
 use App\Movie;
+use Illuminate\Support\Facades\Auth;
 
 class RentsController extends Controller
 {
@@ -30,9 +31,11 @@ class RentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $movie = Movie::find($request->movie_id);
+        $users = User::all()->pluck('dni','id');
+        return view('admin.rents.create')->with(['movie' => $movie, 'users' => $users]);
     }
 
     /**
@@ -43,7 +46,15 @@ class RentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $rent = new Rent($request->all());
+        if($rent->user_id == null){
+          $rent->user_id = Auth::user()->id;
+        }
+        $rent->save();
+
+        flash('El alquiler se registró con éxito')->success();
+        return redirect()->route('rents.index');
     }
 
     /**

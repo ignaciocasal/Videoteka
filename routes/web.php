@@ -31,6 +31,10 @@ Route::group(['prefix' => 'admin'],function(){
       'as' => 'movies.destroy'
     ]);
   Route::resource('rents','RentsController');
+  Route::get('rents/{movie_id}/create',[
+    'uses' => 'RentsController@create',
+    'as' => 'rents.create'
+  ]);
     Route::get('rents/{id}/destroy',[
       'uses' => 'RentsController@destroy',
       'as' => 'rents.destroy'

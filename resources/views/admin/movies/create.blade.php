@@ -3,6 +3,7 @@
 @section('title','Crear Película')
 
 @section('content')
+
     {!! Form::open(['route'=>'movies.store', 'method'=>'POST']) !!}
     <div class="form-group">
         {!! Form::label('title','Título') !!}

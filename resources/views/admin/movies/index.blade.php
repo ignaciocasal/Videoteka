@@ -39,6 +39,9 @@
                 <td>{{ $movie->parental_guide->name }}</td>
                 <td>{{ $movie->trailer}}</td>
                 <td>
+                    @if ($movie->availables > 0)
+                      <a href="{{ route('rents.create', $movie->id) }}" class="btn btn-warning"><i class="btn btn" aria-hidden="true"></i>Alquilar</a>
+                    @endif
                     <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     <a href="{{ route('movies.destroy', $movie->id) }}"  onclick="return confirm('Esta seguro que desea eliminar la película?')" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
