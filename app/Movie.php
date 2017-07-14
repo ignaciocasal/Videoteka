@@ -9,7 +9,7 @@ class Movie extends Model
 {
     protected $table = "movies"; //nombre de la tabla
 
-    protected $fillable = ['title','duration','availables','trailer','parental_guide_id'];
+    protected $fillable = ['title','duration','availables','poster', 'trailer','parental_guide_id'];
 
     public $timestamps = false; //desactivar los timestamps
 

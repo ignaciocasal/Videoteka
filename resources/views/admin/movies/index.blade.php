@@ -26,7 +26,8 @@
             <th>Duración (min)</th>
             <th>Disponibles</th>
             <th>Parental Guide</th>
-            <th>URL Trailer</th>
+            <th>Poster</th>
+            <th>Trailer</th>
         </tr>
         </thead>
         <tbody>
@@ -37,10 +38,24 @@
                 <td>{{ $movie->duration}}</td>
                 <td>{{ $movie->availables}}</td>
                 <td>{{ $movie->parental_guide->name }}</td>
-                <td>{{ $movie->trailer}}</td>
+                <td>
+                    @if(is_null($movie->poster))
+                        <span class="label label-danger">{!! "No" !!}</span>
+                    @else
+                        <span class="label label-primary">{!! "Si" !!}</span>
+                    @endif
+
+                </td>
+                <td>
+                    @if(is_null($movie->trailer))
+                        <span class="label label-danger">{!! "No" !!}</span>
+                    @else
+                        <span class="label label-primary">{!! "Si" !!}</span>
+                    @endif
+                </td>
                 <td>
                     @if ($movie->availables > 0)
-                      <a href="{{ route('rents.create', $movie->id) }}" class="btn btn-warning"><i class="btn btn" aria-hidden="true"></i>Alquilar</a>
+                      <a href="{{ route('rents.create', $movie->id) }}" class="btn btn-warning"><i class="fa fa-usd" aria-hidden="true"></i> Alquilar</a>
                     @endif
                     <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     <a href="{{ route('movies.destroy', $movie->id) }}"  onclick="return confirm('Esta seguro que desea eliminar la película?')" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>

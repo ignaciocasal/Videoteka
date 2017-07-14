@@ -21,8 +21,13 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('poster','URL del poster') !!}
+        {!! Form::text('poster', null, ['class'=>'form-control', 'placeholder'=>'http://www.impawards.com/1972/posters/godfather_ver2.jpg']) !!}
+    </div>
+
+    <div class="form-group">
         {!! Form::label('trailer','URL del trailer') !!}
-        {!! Form::text('trailer', null, ['class'=>'form-control', 'placeholder'=>'https://']) !!}
+        {!! Form::text('trailer', null, ['class'=>'form-control', 'placeholder'=>'https://www.youtube.com/watch?v=COQvkUmN6H8']) !!}
     </div>
 
     <div class="form-group">
