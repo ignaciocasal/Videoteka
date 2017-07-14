@@ -3,7 +3,9 @@
 @section('title','Alquileres')
 
 @section('content')
-
+<div class="col-lg-8 ">
+    <a href="{{ route('movies.index') }}" class="btn btn-success">Nuevo alquiler</a>
+</div>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -11,6 +13,7 @@
         <th>Usuario</th>
         <th>Película</th>
         <th>Fecha de reserva</th>
+        <th>Fecha de devolución</th>
 
     </tr>
     </thead>
@@ -21,6 +24,7 @@
             <td>{{ $rent->user->name}}</td>
             <td>{{ $rent->movie->title }}</td>
             <td>{{ $rent->created_at}}</td>
+            <td>{{ $rent->updated_at}}</td>
 
             <td>
 

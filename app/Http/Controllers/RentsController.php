@@ -53,6 +53,10 @@ class RentsController extends Controller
         }
         $rent->save();
 
+        $movie = Movie::find($request->movie_id);
+
+        $movie->availables = $movie->availables - 1 ;
+        $movie->save();
         flash('El alquiler se registró con éxito')->success();
         return redirect()->route('rents.index');
     }
