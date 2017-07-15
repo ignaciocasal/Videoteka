@@ -34,7 +34,7 @@ class Genre extends Model
         return $query->where('name', 'LIKE', '%'.$name.'%' );
     }
 
-//    public function scopeSearchGenre($query, $name){
-//        return $query->where('name', '=', $name);
-//    }
+    public function scopeSearchGenre($query, $name){
+        return $query->where('name', '=', $name);
+    }
 }

@@ -1,7 +1,7 @@
-<!-- Blog Search Well -->
+<!-- Search Well -->
 <div class="well">
     <h4>{{ __('messages.search') }}</h4>
-    <div class="input-group">
+    {{--<div class="input-group">
         <input type="text" class="form-control">
         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">
@@ -9,54 +9,37 @@
                         </button>
                         </span>
     </div>
-    <!-- /.input-group -->
-</div>
-
-<!-- Blog Categories Well -->
-<div class="well">
-    <h4>{{ __('messages.categories') }}</h4>
-    <ul class="list-group">
-        @foreach($categories as $category)
-            <li class="list-group-item">
-                <a href="{{ route('home.search.category', $category->name) }}">{{ $category->name }}</a>
-                <span class="badge">{{ $category->articles->count() }}</span>
-            </li>
-        @endforeach
-    </ul>
-</div>
-
-<!-- Blog Tags Well -->
-{{--<div class="well">
-    <h4>Tags</h4>
-    <ul class="list-group">
-        @foreach($tags as $tag)
-            <li class="list-group-item">
-                <a href="#">{{ $tag->name }}</a>
-                <span class="badge">{{ $tag->articles->count() }}</span>
-            </li>
-        @endforeach
-    </ul>
-</div>--}}
-
-{{-- ///////////////////// --}}
-
-<div class="well">
-    <h4>{{ __('messages.tags') }}</h4>
-        {{--@foreach($tags as $tags)
-            <li class="list-group-item">
-                <a href="#">{{ $tags->name }}</a>
-                <span class="badge">{{ $tags->articles->count() }}</span>
-            </li>
-        @endforeach--}}
-    <div id="Main">
-        @foreach($tags as $tag)
-            <a href="{{ route('home.search.tag', $tag->name) }}" class="poll_bar">{{ $tag->name }}</a> <span class="poll_val">{{ round($tag->articles->count()*100/$articles_count).'%'}}</span><br/>
-        @endforeach
+    <!-- /.input-group -->--}}
+    <div class="input-group">
+        {!!   Form::open(['route' => 'home.index', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
+        <div class="form-group">
+            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Buscar películas..']) !!}
+        </div>
+        <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+        {!! Form::close() !!}
     </div>
 
 
+
 </div>
-{{-- ///////////////////// --}}
+
+
+
+
+
+<!-- Genres Well -->
+<div class="well">
+    <h4>{{ __('messages.genres') }}</h4>
+    <ul class="list-group">
+        @foreach($genres as $genre)
+            <li class="list-group-item">
+                {{--<a href="">{{ $genre->name }}</a>--}}
+                <a href="{{ route('home.search.movies.from.genre', $genre->name) }}">{{ $genre->name }}</a>
+                <span class="badge">{{ $genre->movies->count() }}</span>
+            </li>
+        @endforeach
+    </ul>
+</div>
 
 
 <!-- Side Text-Widget Well -->
@@ -67,7 +50,7 @@
 </div>--}}
 
 @section('js')
-    <script>
+    {{--<script>
         $(document).ready(function(){
             // add button style
             $(".poll_bar").addClass("btn btn-default");
@@ -90,6 +73,6 @@
                     if(bar_width_rule <= 10){$(".poll_bar").eq(i).addClass("btn btn-sm btn-danger")}
                 });
         });
-    </script>
+    </script>--}}
 @endsection
 

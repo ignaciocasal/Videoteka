@@ -8,34 +8,29 @@
 
         <div class="row">
 
-            <!-- Blog Entries Column -->
+            <!-- Entries Column -->
             <div class="col-md-8">
 
                 <h1 class="page-header">
-                    {{ __('messages.articles') }}
+                    {{ __('messages.movies') }}
                     <small>
-                        @if(isset($category))
-                            {{ $category->name }}
-                            @elseif(isset($tag))
-                                {{ $tag->name }}
+                        @if(isset($genre))
+                            {{ $genre->name }}
                         @endif
                     </small>
                 </h1>
-                @if(count($articles)>0)
-                    @foreach($articles as $article)
-                        <h2>
-                            <a href="{{ route('home.view.article', $article->slug) }}">{{ $article->title }}</a>
-                        </h2>
-                        <p class="lead">
-                            by <a href="#">{{ $article->user->name }}</a>
-                        </p>
+                {{--<div class="row">--}}
+                @if(count($movies)>0)
+                    @foreach($movies as $movie)
+
+                        {{--           <i class="fa fa-folder-open-o" aria-hidden="true"></i> <a href="">{{ $movie->genre->name }}</a>
                         <i class="fa fa-folder-open-o" aria-hidden="true"></i> <a href="{{ route('home.search.category', $article->category->name) }}">{{ $article->category->name }}</a>
                         <div class="pull-right">
                             <i class="fa fa-clock-o" aria-hidden="true"></i> <small>{{  $article->created_at->diffForHumans() }} </small>
                         </div>
                         @foreach($article->images as $image)
                         <hr>
-                            <img class="img-responsive center-block" src="{{ asset('images/articles/'.$image->name ) }}" alt="{{ $image->name }}">
+                            <img class="img-responsive center-block" src="{{ $movie->poster }}" alt="{{ $movie->title }}">
                         @endforeach
                         <hr>
                         @if(strlen($article->content) < 240)
@@ -43,35 +38,85 @@
                         @else
                             <p>{!! substr($article->content, 0, 240).'...' !!}</p>
                         @endif
+                        <a class="btn btn-primary" href="">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
                         <a class="btn btn-primary" href="{{ route('home.view.article', $article->slug) }}">{{ __('messages.read_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-                        <hr>
-                    @endforeach
-                @else
-                    <p class="text-center">{{ __('messages.empty_articles') }}</p>
-                @endif
+                        <hr>--}}
 
+                            <div class="singular">
+                                <div class="content">
+                                    @if($movie->poster)
+                                        <img src="{{ $movie->poster }}">
+                                    @else
+                                        {{--<img src="https://www.classicposters.com/images/nopicture.gif"> --}}{{--Imagen por defecto (imagen no disponible)--}}
+                                        <img src="https://lightning.od-cdn.com/17.0.1-build-1201-master/public/img/no-cover_en_US.jpg"> {{--Imagen por defecto (imagen no disponible)--}}
+                                    @endif
+                                    <div class="info">
+                                        <div class="name">{{ $movie->title }}</div>
+                                        <div class="genres">
+                                            @foreach($movie->genres as $genre)
+                                                {{  "• ".$genre->name }}
+                                            @endforeach
+                                        </div>
+                                        <a href="#" class="btn btn-primary btn-sm" role="button">{{ __('messages.rent') }} <span class="glyphicon glyphicon-usd"></span></a>
+                                        <a href="#" class="btn btn-default btn-sm" role="button">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                    @endforeach
+
+                @else
+                    <p class="text-center">{{ __('messages.empty_movies') }}</p>
+                @endif
+                {{--</div>--}}
                 <!-- Pager -->
                 <div class="text-right">
-                    {{ $articles->links() }}
+                    {{ $movies->links() }}
                 </div>
 
 
             </div>
 
-            <!-- Blog Sidebar Widgets Column -->
+            <!-- Sidebar Widgets Column -->
             <div class="col-md-4">
 
                @include('layouts.aside')
 
             </div>
-
         </div>
         <!-- /.row -->
 
+
+{{--        <div class="container">
+            @foreach($movies as $movie)
+                <div class="singular">
+                    <div class="content">
+                        @if($movie->poster)
+                            <img src="{{ $movie->poster }}">
+                        @else
+                            --}}{{--<img src="https://www.classicposters.com/images/nopicture.gif"> --}}{{----}}{{--Imagen por defecto (imagen no disponible)--}}{{--
+                            <img src="https://lightning.od-cdn.com/17.0.1-build-1201-master/public/img/no-cover_en_US.jpg"> --}}{{--Imagen por defecto (imagen no disponible)--}}{{--
+                        @endif
+                        <div class="info">
+                            <div class="name">{{ $movie->title }}</div>
+                            <div class="genres">
+                                @foreach($movie->genres as $genre)
+                                    {{  "• ".$genre->name }}
+                                @endforeach
+                            </div>
+                            <a href="#" class="btn btn-primary btn-sm" role="button">{{ __('messages.rent') }} <span class="glyphicon glyphicon-usd"></span></a>
+                            <a href="#" class="btn btn-default btn-sm" role="button">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>--}}
+
+
         <!-- Footer -->
         <footer>
-            @include('layouts.footer')
+            {{--@include('layouts.footer')--}}
         </footer>
 
     </div>
