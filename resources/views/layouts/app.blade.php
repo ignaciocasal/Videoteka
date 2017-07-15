@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/trumbowyg/ui/trumbowyg.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/blog-home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom-styles.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
