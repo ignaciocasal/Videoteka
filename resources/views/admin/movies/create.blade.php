@@ -27,7 +27,7 @@
 
     <div class="form-group">
         {!! Form::label('trailer','URL del trailer') !!}
-        {!! Form::text('trailer', null, ['class'=>'form-control', 'placeholder'=>'https://www.youtube.com/watch?v=COQvkUmN6H8']) !!}
+        {!! Form::text('trailer', null, ['class'=>'form-control', 'placeholder'=>'https://www.youtube.com/embed/COQvkUmN6H8']) !!}
     </div>
 
     <div class="form-group">
