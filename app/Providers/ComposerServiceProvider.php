@@ -14,7 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['home'], 'App\Http\ViewComposers\AsideComposer'
+        View::composer(['home','movie.index'], 'App\Http\ViewComposers\AsideComposer'
         );
     }
 

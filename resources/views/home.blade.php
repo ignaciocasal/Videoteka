@@ -58,7 +58,7 @@
                                             @endforeach
                                         </div>
                                         <a href="#" class="btn btn-primary btn-sm" role="button">{{ __('messages.rent') }} <span class="glyphicon glyphicon-usd"></span></a>
-                                        <a href="#" class="btn btn-default btn-sm" role="button">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                        <a href="{{ route('home.view.movie', $movie->slug) }}" class="btn btn-default btn-sm" role="button">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
                                     </div>
                                 </div>
                             </div>

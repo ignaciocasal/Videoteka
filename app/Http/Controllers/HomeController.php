@@ -51,27 +51,17 @@ class HomeController extends Controller
             ->with('genre', $genre);
     }
 
-//    public function searchTag($name)
-//    {
-//        $tag = Tag::searchTag($name)->first(); //Extraigo el primer elemento de la coleccion para tenerlo como objeto. (Siempre va a traer solo un elemento. El nombre el unico)
-//        $articles = $tag->articles()->paginate(5);
-//        $articles->each(function ($articles){
-//            $articles->category;
-//            $articles->user;
-//            $articles->images;
-//        });
-//        return view('home')->with('articles', $articles)
-//            ->with('tag', $tag);
-//    }
 
-//    public function viewArticle($slug)
-//    {
-//        $article = Article::findBySlugOrFail($slug);
-//        $article->category;
-//        $article->user;
-//        $article->images;
-//        $article->tags;
-//
-//        return view('article.index')->with('article', $article);
-//    }
+    public function viewMovie($slug)
+    {
+        $movie = Movie::where('slug', $slug)->first();
+//        $movie = Movie::findBySlugOrFail($slug);
+        if (is_null($movie)){
+            return redirect()->route('home.index');
+        }
+        $movie->genres;
+        $movie->parental_guide;
+
+        return view('movie.index')->with('movie', $movie);
+    }
 }

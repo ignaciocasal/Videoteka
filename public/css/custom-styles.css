@@ -7,7 +7,6 @@
     position: relative;
     border: solid 4px #3d4b56;
     overflow: hidden;
-    cursor: pointer;
 }
 .singular img {
     width: 216px;
@@ -64,4 +63,27 @@
 .content:hover img {
     -webkit-transform: translate(0px, 175px);
     transform: translate(0px, -10px);
+}
+
+.content-img{
+    float: left;
+    margin-right: 50px;
+    height: 350px;
+    width: 270px;
+
+}
+
+.content-img img{
+    border: 3px solid #3c3c3c;
+    border-radius: 12px;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.content-img img:hover{
+    opacity: .8;
+}
+
+.rent{
+    margin-top: 35px;
 }
