@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Movie extends Model
 {
@@ -14,6 +16,7 @@ class Movie extends Model
     public $timestamps = false; //desactivar los timestamps
 
     use SoftDeletes;
+    use HasSlug; //Slug Package
 
     /**
      * The attributes that should be mutated to dates.
@@ -21,6 +24,16 @@ class Movie extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
 
     // para establecer relacion
         public function genres(){
