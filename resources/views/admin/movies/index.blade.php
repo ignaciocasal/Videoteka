@@ -42,7 +42,7 @@
                     @if(is_null($movie->poster))
                         <span class="label label-danger">{!! "No" !!}</span>
                     @else
-                        <span class="label label-primary">{!! "Si" !!}</span>
+                        <span class="label label-success">{!! "Si" !!}</span>
                     @endif
 
                 </td>
@@ -50,12 +50,12 @@
                     @if(is_null($movie->trailer))
                         <span class="label label-danger">{!! "No" !!}</span>
                     @else
-                        <span class="label label-primary">{!! "Si" !!}</span>
+                        <span class="label label-success">{!! "Si" !!}</span>
                     @endif
                 </td>
                 <td>
                     @if ($movie->availables > 0)
-                      <a href="{{ route('rents.create', $movie->id) }}" class="btn btn-warning"><i class="fa fa-usd" aria-hidden="true"></i> Alquilar</a>
+                      <a href="{{ route('rents.create', $movie->id) }}" class="btn btn-primary"><i class="fa fa-usd" aria-hidden="true"></i> Alquilar</a>
                     @endif
                     <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     <a href="{{ route('movies.destroy', $movie->id) }}"  onclick="return confirm('Esta seguro que desea eliminar la película?')" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
