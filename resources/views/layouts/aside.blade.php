@@ -18,7 +18,6 @@
     <ul class="list-group">
         @foreach($genres as $genre)
             <li class="list-group-item">
-                {{--<a href="">{{ $genre->name }}</a>--}}
                 <a href="{{ route('home.search.movies.from.genre', $genre->name) }}">{{ $genre->name }}</a>
                 <span class="badge">{{ $genre->movies->count() }}</span>
             </li>

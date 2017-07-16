@@ -20,11 +20,6 @@ class AsideComposer
     public function compose(View $view)
     {
         $genres = Genre::orderBy('name','ASC')->get();
-//        $tags = Tag::with('articles')->get()->sortBy(function($tag)
-//        {
-//            return $tag->articles->count();
-//        },$options = SORT_REGULAR, $descending = true);
-//        $articles = Article::orderBy('title','ASC')->count();
         $view->with('genres', $genres);
     }
 }
