@@ -11,10 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/',[
     'uses'  => 'HomeController@index',
     'as'    => 'home.index'
@@ -23,6 +19,11 @@ Route::get('/',[
 Route::get('genres/{name}', [
     'uses'  => 'HomeController@searchMoviesFromGenre',
     'as'    => 'home.search.movies.from.genre'
+]);
+
+Route::get('movies/{slug}', [
+    'uses'  => 'HomeController@viewMovie',
+    'as'    => 'home.view.movie'
 ]);
 
 
