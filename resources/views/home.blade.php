@@ -48,7 +48,6 @@
                                     @if($movie->poster)
                                         <img src="{{ $movie->poster }}">
                                     @else
-                                        {{--<img src="https://www.classicposters.com/images/nopicture.gif"> --}}{{--Imagen por defecto (imagen no disponible)--}}
                                         <img src="https://lightning.od-cdn.com/17.0.1-build-1201-master/public/img/no-cover_en_US.jpg"> {{--Imagen por defecto (imagen no disponible)--}}
                                     @endif
                                     <div class="info">
@@ -86,33 +85,6 @@
             </div>
         </div>
         <!-- /.row -->
-
-
-{{--        <div class="container">
-            @foreach($movies as $movie)
-                <div class="singular">
-                    <div class="content">
-                        @if($movie->poster)
-                            <img src="{{ $movie->poster }}">
-                        @else
-                            --}}{{--<img src="https://www.classicposters.com/images/nopicture.gif"> --}}{{----}}{{--Imagen por defecto (imagen no disponible)--}}{{--
-                            <img src="https://lightning.od-cdn.com/17.0.1-build-1201-master/public/img/no-cover_en_US.jpg"> --}}{{--Imagen por defecto (imagen no disponible)--}}{{--
-                        @endif
-                        <div class="info">
-                            <div class="name">{{ $movie->title }}</div>
-                            <div class="genres">
-                                @foreach($movie->genres as $genre)
-                                    {{  "• ".$genre->name }}
-                                @endforeach
-                            </div>
-                            <a href="#" class="btn btn-primary btn-sm" role="button">{{ __('messages.rent') }} <span class="glyphicon glyphicon-usd"></span></a>
-                            <a href="#" class="btn btn-default btn-sm" role="button">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>--}}
-
 
         <!-- Footer -->
         <footer>
