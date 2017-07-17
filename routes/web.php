@@ -27,7 +27,7 @@ Route::get('movies/{slug}', [
 ]);
 
 
-Route::group(['prefix' => 'admin'],function(){
+Route::group(['prefix' => 'admin','middleware' => 'auth'],function(){
   Route::resource('users','UsersController'); //Primer parametro: nombre de grupo de rutas / segundo nombre del controlador
     Route::get('users/{id}/destroy', [
       'uses' => 'UsersController@destroy',
@@ -55,3 +55,7 @@ Route::group(['prefix' => 'admin'],function(){
   ]);
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
