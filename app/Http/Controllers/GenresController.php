@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Genre;
-use App\Http\Requests\GenreRequest;
 use Illuminate\Http\Request;
 
 class GenresController extends Controller
@@ -35,7 +34,7 @@ class GenresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GenreRequest $request)
+    public function store(Request $request)
     {
         $genres = new Genre($request->all());
         $genres->save();
@@ -75,7 +74,7 @@ class GenresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(GenreRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $genre = Genre::find($id);
         $genre->fill($request->all());
