@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
-@section('title',__('messages.create_user'))
+@section('title', 'Crear Usuario')
 
 @section('content')
+
     {!! Form::open(['route'=>'users.store', 'method'=>'POST']) !!}
     <div class="form-group">
         {!! Form::label('name','Nombre') !!}
@@ -21,7 +22,7 @@
 
     <div class="form-group">
         {!! Form::label('email','E-mail') !!}
-        {!! Form::email('email', null, ['class'=>'form-control', 'placeholder'=>'Correo Electronico']) !!}
+        {!! Form::email('email', null, ['class'=>'form-control', 'placeholder'=>'Correo Electrónico']) !!}
     </div>
 
     <div class="form-group">

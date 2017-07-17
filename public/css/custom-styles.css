@@ -7,6 +7,7 @@
     position: relative;
     border: solid 4px #3d4b56;
     overflow: hidden;
+    /*border-radius: 8px;*/
 }
 .singular img {
     width: 216px;
@@ -29,7 +30,6 @@
     position: absolute;
     bottom: -178px;
     background: #3d4b56;
-    /*top: $heightsingular;*/
     left: 0px;
     color: white;
     width: 100%;
