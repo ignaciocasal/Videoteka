@@ -36,10 +36,13 @@
                     <div class="content-info">
                         <p style="font-size: 18px;"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ $movie->duration." min"}} </p>
                         <p style="font-size: 18px;"><span style="font-size: 10px;" class="label label-default">PG</span> {{ $movie->parental_guide->name }} </p>
-
+                        @if ($movie->availables <= 0)
+                          <p style="font-size: 18px;"><i class="fa fa-clock-o" aria-hidden="true"></i> No hay copia disponible para alquilar </p>
+                        @else
                         <div class="rent">
                             <a href="#" class="btn btn-primary btn-group-lg" role="button">{{ __('messages.rent') }} <span class="glyphicon glyphicon-usd"></span></a>
                         </div>
+                        @endif
                     </div>
                 </div>
 

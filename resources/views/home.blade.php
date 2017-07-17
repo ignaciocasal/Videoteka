@@ -57,7 +57,21 @@
                                                 {{  "• ".$genre->name }}
                                             @endforeach
                                         </div>
-                                        <a href="#" class="btn btn-primary btn-sm" role="button">{{ __('messages.rent') }} <span class="glyphicon glyphicon-usd"></span></a>
+                                        @if (Auth::user() && $movie->availables > 0)
+                                            @if (Auth::user()->type == 'admin')
+                                            <a href="{{ route('rents.create', $movie->id) }}" class="btn btn-primary btn-sm" role="button">{{ __('messages.rent') }} <span class="glyphicon glyphicon-usd"></span></a>
+                                            @endif
+                                            @if (Auth::user()->type == 'member')
+                                            {!! Form::open(['route'=>'rents.store', 'method'=>'POST']) !!}
+                                                <input name="movie_id"  value="{{ $movie->id }}" hidden></input> <!-- Acá se manda el id de la película -->
+                                                <input name="user_id"  value="{{ Auth::user()->id }}" hidden></input>
+                                                {!! Form::submit('Alquilar',['class'=>'btn btn-primary']) !!}
+                                                <!--<a href="#" class="btn btn-primary btn-sm" role="button">{{ __('messages.rent') }} <span class="glyphicon glyphicon-usd"></span></a> -->
+                                          {!! Form::close() !!}
+
+
+                                            @endif
+                                        @endif
                                         <a href="{{ route('home.view.movie', $movie->slug) }}" class="btn btn-default btn-sm" role="button">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
                                     </div>
                                 </div>
