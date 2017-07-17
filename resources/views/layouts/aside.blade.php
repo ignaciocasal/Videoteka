@@ -19,7 +19,7 @@
         @foreach($genres as $genre)
             <li class="list-group-item">
                 <a href="{{ route('home.search.movies.from.genre', $genre->name) }}">{{ $genre->name }}</a>
-                <span class="badge">{{ $genre->movies->count() }}</span>
+                <span class="badge">{{ $genre->movies->where('availables', '>', 0)->count() }}</span>
             </li>
         @endforeach
     </ul>
