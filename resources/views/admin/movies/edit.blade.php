@@ -17,7 +17,6 @@
     <div class="form-group">
         {!! Form::label('availables','Disponibles') !!}
         {!! Form::number('availables', $movie->availables, ['class'=>'form-control', 'placeholder'=>'Cantidad disponible']) !!}
-
     </div>
 
     <div class="form-group">

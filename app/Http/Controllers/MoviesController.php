@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Genre;
+use App\Http\Requests\MovieRequest;
 use App\Movie;
 use App\Parental_guide;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class MoviesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MovieRequest $request)
     {
         $movie = new Movie($request->all());
 //        $article->user_id = Auth::user()->id;
@@ -98,7 +99,7 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MovieRequest $request, $id)
     {
         $movie = Movie::find($id);
         $movie->fill($request->all());
