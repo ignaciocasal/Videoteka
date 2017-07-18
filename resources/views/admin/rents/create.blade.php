@@ -27,8 +27,5 @@
             placeholder_text_multiple: 'Seleccione el usuario',
             no_results_text: 'No se encontraron géneros con el nombre'
         });
-
-
-//        $('#content').trumbowyg();
     </script>
 @endsection

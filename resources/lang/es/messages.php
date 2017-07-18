@@ -13,19 +13,18 @@ return [
     |
     */
 
-    'movies'             => 'Películas',
-    'genres'             => 'Géneros',
-    'users'              => 'Usuarios',
-    'rents'               => 'Alquileres',
-//    'images'             => 'Images',
-    'search'             => 'Buscar',
-    'see_more'          => 'Ver Más',
-    'rent'          => 'Alquilar',
+    'movies'         => 'Películas',
+    'genres'         => 'Géneros',
+    'users'          => 'Usuarios',
+    'rents'          => 'Alquileres',
+    'search'         => 'Buscar',
+    'see_more'       => 'Ver Más',
+    'rent'           => 'Alquilar',
+    'my_rents'       => 'Mis Alquileres',
 
-    'empty_movies'     => 'No hay películas para mostrar',
 
-//    'edit_user'          => 'Edit User',
-//    'create_user'        => 'Create User',
+    'empty_movies'   => 'No hay películas para mostrar',
+
 
 
 ];

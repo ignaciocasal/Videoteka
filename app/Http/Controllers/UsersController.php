@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -79,6 +80,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->fill($request->all());
+        $user->password = bcrypt($request->password);
         $user->save();
 
         flash('El usuario ' .$user->name. ' ha sido editado con exito')->success();
@@ -99,4 +101,12 @@ class UsersController extends Controller
         flash('El usuario '. $user->name .' se ha eliminado con exito')->success();
         return redirect()->route('users.index');
     }
+
+    /*Historial de peliculas del socio*/
+    public function rentsHistory(){
+        $user = User::find(Auth::user()->id); //Get usuario actual
+        $rents = $user->rents()->orderBy('id', 'DESC')->paginate(13); //Get alquileres del usuario
+        return view('rents.index')->with('rents', $rents);
+    }
+
 }

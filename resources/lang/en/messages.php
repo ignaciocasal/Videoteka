@@ -13,20 +13,18 @@ return [
     |
     */
 
-    'movies'             => 'Movies',
-    'genres'             => 'Genres',
-    'users'              => 'Users',
-    'rents'               => 'Rents',
-//    'images'             => 'Images',
-    'search'             => 'Search',
-    'see_more'          => 'See More',
+    'movies'        => 'Movies',
+    'genres'        => 'Genres',
+    'users'         => 'Users',
+    'rents'         => 'Rents',
+    'search'        => 'Search',
+    'see_more'      => 'See More',
     'rent'          => 'Rent',
+    'my_rents'      => 'My Rents',
 
 
-    'empty_movies'     => 'No movies to show',
+    'empty_movies'  => 'No movies to show',
 
-//    'edit_user'          => 'Edit User',
-//    'create_user'        => 'Create User',
 
 
 

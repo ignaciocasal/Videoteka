@@ -10,28 +10,36 @@
 
     <!-- Logo-->
     <a class="navbar-brand" href="{{ url('/') }}">
-        {{ config('app.name', 'Videoteka') }}
+        {{ config('app.name') }}
     </a>
 </div>
 
 <div class="collapse navbar-collapse" id="app-navbar-collapse">
     <!-- Left Side Of Navbar -->
-     @if(Auth::user() && Auth::user()->type == 'admin')
-    <ul class="nav navbar-nav">
-            <li>
-                <a href="{{ route('movies.index') }}">{{ __('messages.movies') }}</a>
-            </li>
-            <li>
-                <a href="{{ route('genres.index') }}">{{ __('messages.genres') }}</a>
-            </li>
-            <li>
-                <a href="{{ route('users.index') }}">{{ __('messages.users') }}</a>
-            </li>
-            <li>
-                <a href="{{ route('rents.index') }}">{{ __('messages.rents') }}</a>
-            </li>
-    </ul>
-     @endif
+    @if(Auth::user())
+        @if(Auth::user()->type == 'admin')
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{ route('movies.index') }}">{{ __('messages.movies') }}</a>
+                </li>
+                <li>
+                    <a href="{{ route('genres.index') }}">{{ __('messages.genres') }}</a>
+                </li>
+                <li>
+                    <a href="{{ route('users.index') }}">{{ __('messages.users') }}</a>
+                </li>
+                <li>
+                    <a href="{{ route('rents.index') }}">{{ __('messages.rents') }}</a>
+                </li>
+            </ul>
+        @elseif(Auth::user()->type == 'member')
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{ route('rents.my_rents') }}">{{ __('messages.my_rents') }}</a>
+                </li>
+            </ul>
+        @endif
+    @endif
 
     <!-- Right Side Of Navbar -->
      <ul class="nav navbar-nav navbar-right">

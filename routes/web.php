@@ -26,6 +26,11 @@ Route::get('movies/{slug}', [
     'as'    => 'home.view.movie'
 ]);
 
+Route::get('rents', [
+    'uses'  => 'UsersController@rentsHistory',
+    'as'    => 'rents.my_rents'
+]);
+
 
 Route::group(['prefix' => 'admin','middleware' => 'auth'],function(){
   Route::resource('users','UsersController'); //Primer parametro: nombre de grupo de rutas / segundo nombre del controlador
