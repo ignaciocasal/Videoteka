@@ -30,6 +30,7 @@
                 @endif
                 </td>
                 <td>
+                    <a href="{{ route('users.rents', $user->id) }}" class="btn btn-primary"><i class="fa fa-usd" aria-hidden="true"></i> Alquileres</a>
                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     <a href="{{ route('users.destroy', $user->id) }}"  onclick="return confirm('Esta seguro que desea eliminar el usuario?')" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>

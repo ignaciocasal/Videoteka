@@ -102,11 +102,18 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
-    /*Historial de peliculas del socio*/
-    public function rentsHistory(){
-        $user = User::find(Auth::user()->id); //Get usuario actual
-        $rents = $user->rents()->orderBy('id', 'DESC')->paginate(13); //Get alquileres del usuario
-        return view('rents.index')->with('rents', $rents);
+    /*Historial de peliculas del usuario*/
+    public function rentsHistory($id=null){
+        if (!is_null($id)){
+            $user = User::find($id); //Get usuario por $id (para admin)
+            $rents = $user->rents()->orderBy('id', 'DESC')->paginate(13);
+            return view('admin.rents.index')->with('rents', $rents);
+        }else{
+            $user = User::find(Auth::user()->id); //Get usuario actual (para member)
+            $rents = $user->rents()->orderBy('id', 'DESC')->paginate(13);
+            return view('rents.index')->with('rents', $rents);
+        }
     }
+
 
 }

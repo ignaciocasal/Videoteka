@@ -15,9 +15,9 @@ class RentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-      $rents = Rent::orderBy('id', 'DESC')->paginate(5);
+        $rents = Rent::orderBy('id', 'DESC')->paginate(5);
         $rents->each(function ($rents){
             $rents->user;
             $rents->movie;
