@@ -26,8 +26,8 @@ class MovieRequest extends FormRequest
         return [
             'title' => 'max:60|required',
             'availables' => 'integer|min:0|required',
-            'poster' => 'url',
-            'trailer' => 'url',
+            'poster' => 'nullable|url',
+            'trailer' => 'nullable|url',
             'parental_guide_id' => 'required',
         ];
     }
