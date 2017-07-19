@@ -20,7 +20,11 @@
         <tr>
             <td>{{ $rent->movie->title }}</td>
             <td>{{ $rent->created_at}}</td>
-            <td>{{ $rent->updated_at}}</td>
+            @if ($rent->updated_at == null)
+              <td>No devuelta aún</td>
+            @else
+              <td>{{ $rent->updated_at}}</td>
+            @endif
         </tr>
     @endforeach
     </tbody>
