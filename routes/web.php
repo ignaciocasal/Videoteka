@@ -60,6 +60,10 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'],function(){
         'uses' => 'RentsController@create',
         'as' => 'rents.create'
     ]);
+    Route::get('rents/{rent_id}/updateDev',[
+        'uses' => 'RentsController@updateDev',
+        'as' => 'rents.updateDev'
+    ]);
     Route::get('rents/{id}/destroy',[
         'uses' => 'RentsController@destroy',
         'as' => 'rents.destroy'

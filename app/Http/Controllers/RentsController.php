@@ -34,7 +34,7 @@ class RentsController extends Controller
     public function create(Request $request)
     {
         $movie = Movie::find($request->movie_id);
-        $users = User::all()->pluck('dni','id');
+        $users = User::where('type','member')->pluck('email','id');
         return view('admin.rents.create')->with(['movie' => $movie, 'users' => $users]);
     }
 
@@ -51,6 +51,7 @@ class RentsController extends Controller
         if($rent->user_id == null){
           $rent->user_id = Auth::user()->id;
         }
+        $rent->updated_at = null;
         $rent->save();
 
         $movie = Movie::find($request->movie_id);
@@ -96,7 +97,22 @@ class RentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
+    }
+    // updateDev guarda la fecha y hora de devolución. poniendo en la fecha y hora, la actual.
+    public function updateDev(Request $request)
+    {
+        $rent = Rent::find($request->rent_id);
+        $rent->updated_at = time();
+        $rent->save();
+
+        $movie = Movie::find($rent->movie_id);
+        $movie->availables = $movie->availables + 1;
+        $movie->save();
+
+      flash('Se registró la devolución del alquiler')->success();
+        return redirect()->route('rents.index');
+
     }
 
     /**

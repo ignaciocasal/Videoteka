@@ -24,7 +24,11 @@
             <td>{{ $rent->user->name}}</td>
             <td>{{ $rent->movie->title }}</td>
             <td>{{ $rent->created_at}}</td>
+            @if ($rent->updated_at == null)
+            <td><a href="{{ route('rents.updateDev',$rent->id) }}" class="btn btn-warning">Registrar devolución</a></td>
+            @else
             <td>{{ $rent->updated_at}}</td>
+            @endif
 
             <td>
 
