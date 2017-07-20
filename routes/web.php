@@ -32,12 +32,13 @@ Route::get('movies/{slug}', [
 ]);
 
 Route::get('rents', [
+    'middleware' => 'auth',
     'uses'  => 'UsersController@rentsHistory',
     'as'    => 'rents.my_rents'
 ]);
 
 
-Route::group(['prefix' => 'admin','middleware' => 'auth'],function(){
+Route::group(['prefix' => 'admin','middleware' => ['auth', 'admin']],function(){
     Route::resource('users','UsersController');
     Route::get('users/{id}/destroy', [
         'uses' => 'UsersController@destroy',
