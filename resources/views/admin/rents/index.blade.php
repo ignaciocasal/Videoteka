@@ -25,7 +25,12 @@
             <td>{{ $rent->movie->title }}</td>
             <td>{{ $rent->created_at}}</td>
             @if ($rent->updated_at == null)
-            <td><a href="{{ route('rents.updateDev',$rent->id) }}" class="btn btn-warning">Registrar devolución</a></td>
+            <td>
+                <a href="{{ route('rents.updateDev',$rent->id) }}" class="btn btn-warning">Registrar devolución</a>
+                <a href="{{ route('rents.destroy',$rent->id) }}" onclick="return confirm('Esta seguro que desea cancelar el alquiler?')" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+
+            </td>
+
             @else
             <td>{{ $rent->updated_at}}</td>
             @endif
