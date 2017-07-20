@@ -123,6 +123,10 @@ class RentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rent = Rent::find($id);
+        $rent->delete();
+
+        flash('El alquiler '. $rent->id .' se ha cancelado con exito')->success();
+        return redirect()->route('rents.index');
     }
 }
