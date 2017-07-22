@@ -62,11 +62,8 @@
                                             <a href="{{ route('rents.create', $movie->id) }}" class="btn btn-primary btn-sm" role="button">{{ __('messages.rent') }} <span class="glyphicon glyphicon-usd"></span></a>
                                                 <a href="{{ route('home.view.movie', $movie->slug) }}" class="btn btn-default btn-sm" role="button">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
                                             @elseif(Auth::user()->type == 'member')
-                                                {!! Form::open(['route'=>'rents.store', 'method'=>'POST']) !!}
-                                                    <input name="movie_id"  value="{{ $movie->id }}" hidden></input> <!-- Acá se manda el id de la película -->
-                                                    {!! Form::submit('Alquilar',['class'=>'btn btn-primary btn-sm', 'style'=>'display:inline;']) !!}
-                                                    <a href="{{ route('home.view.movie', $movie->slug) }}" class="btn btn-default btn-sm" role="button">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
-                                                {!! Form::close() !!}
+                                              <a href="{{ route('rents.stores', $movie->id) }}" onClick="return confirm('¿Desea alquilar {{$movie->title}}?')" class="btn btn-primary btn-sm" role="button">{{ __('messages.rent') }} <span class="glyphicon glyphicon-usd"></span></a>  
+                                              <a href="{{ route('home.view.movie', $movie->slug) }}" class="btn btn-default btn-sm" role="button">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>
                                             @endif
                                         @else
                                             <a href="{{ route('home.view.movie', $movie->slug) }}" class="btn btn-default btn-sm" role="button">{{ __('messages.see_more') }} <span class="glyphicon glyphicon-chevron-right"></span></a>

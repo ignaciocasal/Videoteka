@@ -46,12 +46,12 @@ class RentsController extends Controller
      */
     public function store(Request $request)
     {
-
         $rent = new Rent($request->all());
         if($rent->user_id == null){
           $rent->user_id = Auth::user()->id;
         }
         $rent->updated_at = null;
+        $rent->movie_id = $request->movie_id;
         $rent->save();
 
         $movie = Movie::find($request->movie_id);
@@ -97,7 +97,7 @@ class RentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+
     }
     // updateDev guarda la fecha y hora de devolución. poniendo en la fecha y hora, la actual.
     public function updateDev(Request $request)

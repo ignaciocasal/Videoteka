@@ -36,6 +36,11 @@ Route::get('rents', [
     'uses'  => 'UsersController@rentsHistory',
     'as'    => 'rents.my_rents'
 ]);
+Route::get('rents/{movie_id}/store', [
+    'middleware' => 'auth',
+    'uses'  => 'RentsController@store',
+    'as'    => 'rents.stores'
+]);
 
 
 Route::group(['prefix' => 'admin','middleware' => ['auth', 'admin']],function(){
