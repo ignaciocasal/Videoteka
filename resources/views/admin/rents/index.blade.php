@@ -21,7 +21,7 @@
     @foreach($rents as $rent)
         <tr>
             <td>{{ $rent->id }}</td>
-            <td>{{ $rent->user->name}}</td>
+            <td>{{ $rent->user->name.' '.$rent->user->lastname}}</td>
             <td>{{ $rent->movie->title }}</td>
             <td>{{ $rent->created_at}}</td>
             @if ($rent->updated_at == null)

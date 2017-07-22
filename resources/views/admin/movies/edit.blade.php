@@ -48,13 +48,13 @@
 @section('js')
     <script>
         $(".select-genres").chosen({
-            placeholder_text_multiple: 'Seleccione los tags',
-            no_results_text: 'No se encontraron tags con el nombre'
+            placeholder_text_multiple: 'Seleccione los géneros',
+            no_results_text: 'No se encontraron géneros con el nombre'
         });
 
-        $(".select-category").chosen({
-            placeholder_text_single: 'Seleccione la categoria',
-            no_results_text: 'No se encontraron categorias con el nombre'
+        $(".select-parental_guide").chosen({
+            placeholder_text_single: 'Seleccione la clasificación',
+            no_results_text: 'No se encontraron clasificaciones con el nombre'
         });
 
 //        $('#content').trumbowyg();

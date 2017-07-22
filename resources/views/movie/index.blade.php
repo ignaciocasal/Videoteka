@@ -26,9 +26,9 @@
                     <!-- Movie's poster -->
                     <div class="content-img">
                         @if($movie->poster)
-                            <img class="img-responsive" src="{{ $movie->poster }}">
+                            <img width="270" class="img-responsive" src="{{ $movie->poster }}">
                         @else
-                            <img class="img-responsive" src="https://lightning.od-cdn.com/17.0.1-build-1201-master/public/img/no-cover_en_US.jpg"> {{--Imagen por defecto (imagen no disponible)--}}
+                            <img width="270" class="img-responsive" src="https://lightning.od-cdn.com/17.0.1-build-1201-master/public/img/no-cover_en_US.jpg"> {{--Imagen por defecto (imagen no disponible)--}}
                         @endif
                         {{--<img class="img-responsive center-block" src="{{ $movie->genres  }}" alt="{{ $image->name }}">--}}
                     </div>
@@ -62,10 +62,6 @@
                     </div>
                 @endif
 
-                <br>
-                <hr>
-
-
             </div>
 
             <!-- Sidebar Widgets Column -->
@@ -80,7 +76,7 @@
 
         <!-- Footer -->
         <footer>
-            {{--@include('layouts.footer')--}}
+            @include('layouts.footer')
         </footer>
 
     </div>

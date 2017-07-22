@@ -17,10 +17,12 @@
     <h4>{{ __('messages.genres') }}</h4>
     <ul class="list-group">
         @foreach($genres as $genre)
-            <li class="list-group-item">
-                <a href="{{ route('home.search.movies.from.genre', $genre->name) }}">{{ $genre->name }}</a>
-                <span class="badge">{{ $genre->movies->where('availables', '>', 0)->count() }}</span>
-            </li>
+            @if($genre->movies->count()>0) {{--muestra solo los generos que tienen al menos una pelicula--}}
+                <li class="list-group-item">
+                    <a href="{{ route('home.search.movies.from.genre', $genre->name) }}">{{ $genre->name }}</a>
+                    <span class="badge">{{ $genre->movies->where('availables', '>', 0)->count() }}</span>
+                </li>
+            @endif
         @endforeach
     </ul>
 </div>

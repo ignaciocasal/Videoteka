@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $movies = Movie::search($request->title)->where('availables', '>', 0)->orderBy('id','DESC')->paginate(9);
+        $movies = Movie::search($request->title)->where('availables', '>', 0)->orderBy('id','DESC')->paginate(12);
         $movies->each(function ($movies){
             $movies->genres;
             $movies->parental_guide;
@@ -41,7 +41,7 @@ class HomeController extends Controller
         if (is_null($genre)){
             return redirect()->route('home.index');
         }
-        $movies = $genre->movies()->where('availables', '>', 0)->orderBy('id','DESC')->paginate(9);
+        $movies = $genre->movies()->where('availables', '>', 0)->orderBy('id','DESC')->paginate(12);
         $movies->each(function ($movies){
             $movies->genres;
             $movies->parental_guide;
