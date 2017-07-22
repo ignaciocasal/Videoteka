@@ -124,6 +124,11 @@ class RentsController extends Controller
     public function destroy($id)
     {
         $rent = Rent::find($id);
+        // Se restaura la cantidad disponible de peliculas
+        $movie = Movie::find($rent->movie_id);
+        $movie->availables = $movie->availables + 1;
+        $movie->save();
+        
         $rent->delete();
 
         flash('El alquiler '. $rent->id .' se ha cancelado con exito')->success();
