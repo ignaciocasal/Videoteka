@@ -39,7 +39,7 @@ class ParentalGuideTableSeeder extends Seeder
 
             ]);
 
-        } else { echo "\e[31mTable is not empty, therefore NOT "; }
+        } else { echo "Table is not empty, therefore NOT \n"; }
 
 
     }
