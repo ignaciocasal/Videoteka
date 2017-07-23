@@ -40,7 +40,7 @@ class GenresController extends Controller
         $genres = new Genre($request->all());
         $genres->save();
 
-        flash('El género '.$genres->name.' se ha registrado con exito')->success();
+        flash('El género '.$genres->name.' se ha registrado con éxito')->success();
 
         return redirect()->route('genres.index');
     }
@@ -81,7 +81,7 @@ class GenresController extends Controller
         $genre->fill($request->all());
         $genre->save();
 
-        flash('El género ' .$genre->name. ' ha sido editado con exito')->success();
+        flash('El género ' .$genre->name. ' ha sido editado con éxito')->success();
         return redirect()->route('genres.index');
     }
 
@@ -96,7 +96,7 @@ class GenresController extends Controller
         $genre = Genre::find($id);
         $genre->delete();
 
-        flash('El género '. $genre->name .' se ha eliminado con exito')->success();
+        flash('El género '. $genre->name .' se ha eliminado con éxito')->success();
         return redirect()->route('genres.index');
     }
 }

@@ -56,7 +56,7 @@ class MoviesController extends Controller
             $movie->genres()->sync($request->genres_id);
         }
 
-        flash('La película se ha creado con exito')->success();
+        flash('La película se ha creado con éxito')->success();
         return redirect()->route('movies.index');
     }
 
@@ -109,7 +109,7 @@ class MoviesController extends Controller
             $movie->genres()->sync($request->genres_id);
         }
 
-        flash('La  película ' .$movie->title. ' ha sido editada con exito')->success();
+        flash('La  película ' .$movie->title. ' ha sido editada con éxito')->success();
         return redirect()->route('movies.index');
     }
 
@@ -124,7 +124,7 @@ class MoviesController extends Controller
         $movie = Movie::find($id);
         $movie->delete();
 
-        flash('La  película '. $movie->title .' se ha eliminado con exito')->success();
+        flash('La  película '. $movie->title .' se ha eliminado con éxito')->success();
         return redirect()->route('movies.index');
     }
 }

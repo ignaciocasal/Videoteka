@@ -36,7 +36,7 @@
                 <td>{{ $genre->name }}</td>
                 <td>
                     <a href="{{ route('genres.edit', $genre->id) }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="{{ route('genres.destroy', $genre->id) }}"  onclick="return confirm('Esta seguro que desea eliminar el género?')" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    <a href="{{ route('genres.destroy', $genre->id) }}"  onclick="return confirm('¿Está seguro que desea eliminar el género?')" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
         @endforeach

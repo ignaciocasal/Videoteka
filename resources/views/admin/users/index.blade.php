@@ -37,7 +37,7 @@
                   @endif
 
                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="{{ route('users.destroy', $user->id) }}"  onclick="return confirm('Esta seguro que desea eliminar el usuario?')" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    <a href="{{ route('users.destroy', $user->id) }}"  onclick="return confirm('¿Está seguro que desea eliminar el usuario?')" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
         @endforeach

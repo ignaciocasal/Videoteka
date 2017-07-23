@@ -110,7 +110,7 @@ class RentsController extends Controller
         $movie->availables = $movie->availables + 1;
         $movie->save();
 
-      flash('Se registró la devolución del alquiler')->success();
+      flash('La devolución del alquiler se registró con éxito')->success();
         return redirect()->route('rents.index');
 
     }
@@ -131,7 +131,7 @@ class RentsController extends Controller
         
         $rent->delete();
 
-        flash('El alquiler '. $rent->id .' se ha cancelado con exito')->success();
+        flash('El alquiler '. $rent->id .' se ha cancelado con éxito')->success();
         return redirect()->route('rents.index');
     }
 }
